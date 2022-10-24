@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>
+        {{ msgUpper }}
+      </p>
+      <p>
+        {{ msgLower }}
+      </p>
+    
+    </div>
+    <script src="https://unpkg.com/vue@3.0.4/dist/vue.global.js"></script>
+    <script>
+      const computed = Vue.computed
+      Vue.createApp({
+        setup() {
+          let msg = 'Hello World ! '
+          const msgUpper = computed(() => {
+            return msg.toUpperCase()
+          })
+          const msgLower = computed(() => {
+            return msg.toLowerCase()
+          })
+          return {
+            msg,
+            msgUpper,
+            msgLower,
+          }
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

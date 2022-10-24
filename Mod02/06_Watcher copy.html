@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model.number="mydata" />
+      <p>{{ msg }}</p>
+    </div>
+    <script src="https://unpkg.com/vue@3.0.4/dist/vue.global.js"></script>
+    <script>
+      const ref = Vue.ref
+      Vue.createApp({
+        setup() {
+          const mydata = ref(null)
+          const msg = ref("")
+          return {
+            mydata,
+            msg,
+          }
+        },
+        watch: {
+          mydata: function (value) {
+            if (this.IsInRange(value)) {
+              this.msg = "data is valid ";
+            } else {
+              this.msg = "data is invalid ";
+            }
+          },
+        },
+        methods: {
+          IsInRange: function (number) {
+            return number > 0 && number <= 100;
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
