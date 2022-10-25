@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input v-model="userName" placeholder="Enter your name " />
+    <div>Your name is: {{ userName }}</div>
+    <input type="text" v-model="info">
+  </div>
+  <script src="https://unpkg.com/vue@3.0.4/dist/vue.global.js"></script>
+  <script>
+    const ref = Vue.ref
+
+    Vue.createApp({
+      setup() {
+        const userName = ref("")
+        const info = computed({
+          get() {
+            return userName.value;
+          },
+          set(newvalue) {
+            userName.value = newvalue
+          }
+        })
+
+        return {
+          userName,
+          info,
+        }
+      }
+    }).mount("#app");
+  </script>
+</body>
+
+</html>
