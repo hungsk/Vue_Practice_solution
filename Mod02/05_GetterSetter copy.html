@@ -14,11 +14,13 @@
     </div>
     <script src="https://unpkg.com/vue@3.0.4/dist/vue.global.js"></script>
     <script>
+      const ref = Vue.ref
+
       Vue.createApp({
         setup() {
-          let msg = "Hello World ! "
+          const msg = ref("Hello World ! ")
           return {
-            msg: "Hello World ! ",
+            msg,
           }
         },
         computed: {

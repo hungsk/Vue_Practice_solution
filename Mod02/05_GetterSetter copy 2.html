@@ -14,16 +14,17 @@
     </div>
     <script src="https://unpkg.com/vue@3.0.4/dist/vue.global.js"></script>
     <script>
+      const ref = Vue.ref
       const computed = Vue.computed;
       Vue.createApp({
         setup() {
-          let msg = "Hello World ! "
+          const msg = ref("Hello World ! ")
           const msgUpper = computed({
             get() {
-              return msg.toUpperCase()
+              return msg.value.toUpperCase()
             },
             set(newvalue) {
-              msg = newvalue.toLowerCase()
+              msg.value = newvalue.toLowerCase()
             },
           })
           return {
