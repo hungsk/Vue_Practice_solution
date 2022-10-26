@@ -17,13 +17,13 @@
   <script src="https://unpkg.com/vue@3.0.4/dist/vue.global.js"></script>
   <script>
     const ref = Vue.ref
-
+    const computed = Vue.computed
     Vue.createApp({
       setup() {
         const userName = ref("")
         const info = computed({
           get() {
-            return userName.value;
+            return userName.value
           },
           set(newvalue) {
             userName.value = newvalue
